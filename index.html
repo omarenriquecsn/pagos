@@ -161,7 +161,7 @@
             const cedula = "18360450";
             
             // Al copiar, se usa el monto limpio sin letras de "bs"
-            const datosCopiar = `${telefono} ${cedula} ${montoLimpio} banco Mercantil`;
+            const datosCopiar = `\n${telefono} \n${cedula} \n${montoLimpio} \nbanco Mercantil`;
 
             navigator.clipboard.writeText(datosCopiar).then(() => {
                 alert(`¡Datos copiados con éxito!\n\nSe ha copiado: ${datosCopiar}\n\nAhora abre tu aplicación bancaria y pega los datos.`);
