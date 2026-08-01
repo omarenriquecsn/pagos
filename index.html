@@ -9,7 +9,6 @@
             --primary-color: #004080;
             --secondary-color: #007bff;
             --success-color: #28a745;
-            --crypto-color: #f3ba2f;
             --bg-color: #f4f6f9;
             --card-bg: #ffffff;
             --text-color: #333333;
@@ -20,30 +19,31 @@
             background: var(--bg-color);
             color: var(--text-color);
             margin: 0;
-            padding: 15px;
+            padding: 20px;
             display: flex;
             justify-content: center;
+            align-items: center;
+            min-height: 90vh;
         }
 
         .container {
             width: 100%;
-            max-width: 450px;
+            max-width: 400px;
             background: var(--card-bg);
-            padding: 20px;
+            padding: 25px;
             border-radius: 16px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             box-sizing: border-box;
+            text-align: center;
         }
 
         h2 {
-            text-align: center;
             color: var(--primary-color);
             margin-bottom: 5px;
-            font-size: 22px;
+            font-size: 24px;
         }
 
         .subtitle {
-            text-align: center;
             font-size: 14px;
             color: #666;
             margin-top: 0;
@@ -56,11 +56,12 @@
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
-            font-size: 14px;
+            font-size: 15px;
+            text-align: left;
         }
 
         .info-card p {
-            margin: 6px 0;
+            margin: 8px 0;
         }
 
         .instructions-box {
@@ -68,10 +69,11 @@
             border: 1px dashed #bcef;
             padding: 12px 15px;
             border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 13px;
+            margin-bottom: 25px;
+            font-size: 14px;
             color: #0c5460;
             line-height: 1.4;
+            text-align: left;
         }
 
         .instructions-box ol {
@@ -79,59 +81,30 @@
             padding: 0;
         }
 
-        .section-title {
-            font-size: 15px;
-            font-weight: bold;
-            color: var(--primary-color);
-            border-bottom: 2px solid #eee;
-            padding-bottom: 5px;
-            margin: 25px 0 15px 0;
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .btn-copiar {
+            display: block;
             width: 100%;
-            padding: 14px 16px;
-            margin: 10px 0;
-            background: #ffffff;
-            color: var(--text-color);
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: 600;
+            padding: 16px;
+            background: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: bold;
             cursor: pointer;
-            text-decoration: none;
             box-sizing: border-box;
-            transition: all 0.2s ease;
+            transition: background 0.2s ease;
+            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
         }
 
-        .btn:hover {
-            background: #f1f3f5;
-            border-color: #bbb;
-        }
-
-        .btn-banco {
-            border-left: 4px solid var(--secondary-color);
-        }
-
-        .btn-crypto {
-            border-left: 4px solid var(--crypto-color);
-            background: #fffdf5;
-        }
-
-        .btn span {
-            font-size: 12px;
-            color: #777;
-            font-weight: normal;
+        .btn-copiar:hover {
+            background: #218838;
         }
 
         .footer-note {
-            text-align: center;
             font-size: 12px;
             color: #888;
-            margin-top: 25px;
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -143,134 +116,55 @@
 
         <!-- Resumen de Datos -->
         <div class="info-card">
-            <p><strong>Monto a Pagar:</strong> <span id="montoDisplay" style="color: #d9534f; font-weight: bold; font-size: 16px;">Cargando...</span></p>
+            <p><strong>Monto a Pagar:</strong> <span id="montoDisplay" style="color: #d9534f; font-weight: bold; font-size: 17px;">Cargando...</span></p>
             <p><strong>Teléfono:</strong> 0412-5072254</p>
             <p><strong>Cédula:</strong> V-18360450</p>
-            <p><strong>Banco Destino:</strong> Mercantil</p>
+            <p><strong>Banco:</strong> Mercantil</p>
         </div>
 
         <!-- Instrucciones Claras -->
         <div class="instructions-box">
-            <strong>¿Cómo realizar tu pago?</strong>
+            <strong>Instrucciones:</strong>
             <ol>
-                <li><strong>Toca tu banco</strong> en la lista de abajo para copiar los datos.</li>
-                <li>Abre la aplicación de tu banco de forma habitual.</li>
-                <li>Ve a <strong>Pago Móvil</strong> y simplemente <strong>pega</strong> los datos copiados.</li>
+                <li>Presiona el botón verde para <strong>copiar los datos</strong>.</li>
+                <li>Abre la aplicación de tu banco de preferencia.</li>
+                <li>Ve a <strong>Pago Móvil</strong> y <strong>pega</strong> la información.</li>
             </ol>
         </div>
 
-        <!-- SECCIÓN: BANCOS NACIONALES -->
-        <div class="section-title">Bancos Nacionales (Pago Móvil / Transferencia)</div>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Banco de Venezuela')">
-            Banco de Venezuela <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Banesco')">
-            Banesco <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Banco Mercantil')">
-            Banco Mercantil <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('BBVA Provincial')">
-            BBVA Provincial <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Banco Nacional de Crédito (BNC)')">
-            BNC <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Bancamiga')">
-            Bancamiga <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Banco del Tesoro')">
-            Banco del Tesoro <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Bancaribe')">
-            Bancaribe <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Banplus')">
-            Banplus <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Delsur')">
-            Delsur <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Banco Activo')">
-            Banco Activo <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Banco Caroní')">
-            Banco Caroní <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Banco Exterior')">
-            Banco Exterior <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Banco Fondo Común (BFC)')">
-            BFC <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Banco Plaza')">
-            Banco Plaza <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Banco Sofitasa')">
-            Sofitasa <span>Copiar y Pagar</span>
-        </button>
-
-        <button class="btn btn-banco" onclick="copiarDatosBanco('Banco Venezolano de Crédito')">
-            Venezolano de Crédito <span>Copiar y Pagar</span>
-        </button>
-
-        <!-- SECCIÓN: PAGOS INTERNACIONALES (PRÓXIMAMENTE) -->
-        <div class="section-title">Internacionales / Divisas (Próximamente)</div>
-
-        <button class="btn btn-crypto" onclick="alertaProximamente('Binance')">
-            Binance Pay <span>Próximamente</span>
-        </button>
-
-        <button class="btn btn-crypto" onclick="alertaProximamente('Zinli')">
-            Zinli <span>Próximamente</span>
-        </button>
-
-        <button class="btn btn-crypto" onclick="alertaProximamente('Kontigo')">
-            Kontigo <span>Próximamente</span>
+        <!-- Botón Único de Copia -->
+        <button class="btn-copiar" onclick="copiarDatosPago()">
+            📋 Copiar Datos para Pago Móvil
         </button>
 
         <div class="footer-note">
-            Sistema de Pago Automatizado
+            Sistema Automatizado de Cobro
         </div>
     </div>
 
     <script>
+        // Obtener el monto de la URL (Ejemplo: tudominio.com/?monto=350.00Bs)
         const urlParams = new URLSearchParams(window.location.search);
         let montoParam = urlParams.get('monto');
+        
+        // Si no mandan monto por enlace, ponemos uno por defecto
         const montoFinal = montoParam ? decodeURIComponent(montoParam) : "0.00Bs";
         
+        // Mostrar el monto en pantalla
         document.getElementById('montoDisplay').innerText = montoFinal;
 
-        function copiarDatosBanco(nombreBanco) {
+        function copiarDatosPago() {
             const telefono = "04125072254";
             const cedula = "18360450";
+            
+            // Datos listos para copiar de golpe
             const datosCopiar = `${telefono} ${cedula} ${montoFinal}`;
 
             navigator.clipboard.writeText(datosCopiar).then(() => {
-                alert(`¡Datos copiados con éxito!\n\nSe ha copiado: ${datosCopiar}\n\nAhora abre tu aplicación de ${nombreBanco} y pega los datos en Pago Móvil.`);
+                alert(`¡Datos copiados con éxito!\n\nSe ha copiado: ${datosCopiar}\n\nAhora abre tu aplicación bancaria y pega los datos.`);
             }).catch(err => {
-                alert("No se pudo copiar automáticamente. Tus datos son:\nTel: " + telefono + "\nCédula: " + cedula + "\nMonto: " + montoFinal);
+                alert("No se pudo copiar automáticamente. Anota los datos:\nTel: " + telefono + "\nCédula: " + cedula + "\nMonto: " + montoFinal);
             });
-        }
-
-        function alertaProximamente(metodo) {
-            alert(`El método de pago con ${metodo} estará disponible próximamente.`);
         }
     </script>
 
