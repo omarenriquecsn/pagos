@@ -143,27 +143,30 @@
     </div>
 
     <script>
-        // Obtener el monto de la URL (Ejemplo: tudominio.com/?monto=350.00Bs)
+        // Obtener el parámetro 'monto' de la URL
         const urlParams = new URLSearchParams(window.location.search);
         let montoParam = urlParams.get('monto');
         
-        // Si no mandan monto por enlace, ponemos uno por defecto
-        const montoFinal = montoParam ? decodeURIComponent(montoParam) : "0.00Bs";
+        // Limpiar el texto para quitar la palabra 'bs' o 'BS' y dejar solo el número y los decimales limpios
+        let montoLimpio = "0.00";
+        if (montoParam) {
+            montoLimpio = decodeURIComponent(montoParam).replace(/bs/gi, '').trim();
+        }
         
-        // Mostrar el monto en pantalla
-        document.getElementById('montoDisplay').innerText = montoFinal;
+        // Mostrar en pantalla el monto con "Bs" para que el cliente lo vea estético
+        document.getElementById('montoDisplay').innerText = montoLimpio + " Bs";
 
         function copiarDatosPago() {
             const telefono = "04125072254";
-            const cedula = "18.360.450";
+            const cedula = "18360450";
             
-            // Datos listos para copiar de golpe
-            const datosCopiar = `\n${montoFinal} \n${telefono} \n${cedula} \nBanco Mercantil`;
+            // Al copiar, se usa el monto limpio sin letras de "bs"
+            const datosCopiar = `${telefono} ${cedula} ${montoLimpio} banco Mercantil`;
 
             navigator.clipboard.writeText(datosCopiar).then(() => {
                 alert(`¡Datos copiados con éxito!\n\nSe ha copiado: ${datosCopiar}\n\nAhora abre tu aplicación bancaria y pega los datos.`);
             }).catch(err => {
-                alert("No se pudo copiar automáticamente. Anota los datos:\nTel: " + telefono + "\nCédula: " + cedula + "\nMonto: " + montoFinal);
+                alert("No se pudo copiar automáticamente. Anota los datos:\nTel: " + telefono + "\nCédula: " + cedula + "\nMonto: " + montoLimpio);
             });
         }
     </script>
