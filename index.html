@@ -158,7 +158,7 @@
             const cedula = "18360450";
             
             // Datos listos para copiar de golpe
-            const datosCopiar = `telefono:{telefono}  cedula:${cedula} monto:${montoFinal} banco: Mercantil`;
+            const datosCopiar = `telefono: ${telefono}  cedula:${cedula} monto:${montoFinal} banco: Mercantil`;
 
             navigator.clipboard.writeText(datosCopiar).then(() => {
                 alert(`¡Datos copiados con éxito!\n\nSe ha copiado: ${datosCopiar}\n\nAhora abre tu aplicación bancaria y pega los datos.`);
