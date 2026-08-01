@@ -5,109 +5,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portal de Pagos - Pago Móvil</title>
     <style>
-      :root {
-        --primary-color: #004080;
-        --secondary-color: #007bff;
-        --success-color: #28a745;
-        --bg-color: #f4f6f9;
-        --card-bg: #ffffff;
-        --text-color: #333333;
-      }
+        :root {
+            --primary-color: #004080;
+            --secondary-color: #007bff;
+            --success-color: #28a745;
+            --binance-color: #f3ba2f;
+            --zinli-color: #ff3366;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+        }
 
-      body {
-        font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-          Arial, sans-serif;
-        background: var(--bg-color);
-        color: var(--text-color);
-        margin: 0;
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 90vh;
-      }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+        }
 
-      .container {
-        width: 100%;
-        max-width: 400px;
-        background: var(--card-bg);
-        padding: 25px;
-        border-radius: 16px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        box-sizing: border-box;
-        text-align: center;
-      }
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-sizing: border-box;
+            text-align: center;
+        }
 
-      h2 {
-        color: var(--primary-color);
-        margin-bottom: 5px;
-        font-size: 24px;
-      }
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
 
-      .subtitle {
-        font-size: 14px;
-        color: #666;
-        margin-top: 0;
-        margin-bottom: 20px;
-      }
+        .subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
 
-      .info-card {
-        background: #eef2f7;
-        border-left: 5px solid var(--secondary-color);
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        font-size: 15px;
-        text-align: left;
-      }
+        .section-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: var(--primary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin: 25px 0 15px 0;
+            text-align: left;
+        }
 
-      .info-card p {
-        margin: 8px 0;
-      }
+        .info-card {
+            background: #eef2f7;
+            border-left: 5px solid var(--secondary-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            text-align: left;
+        }
 
-      .instructions-box {
-        background: #e8f4fd;
-        border: 1px dashed #bcef;
-        padding: 12px 15px;
-        border-radius: 8px;
-        margin-bottom: 25px;
-        font-size: 14px;
-        color: #0c5460;
-        line-height: 1.4;
-        text-align: left;
-      }
+        .info-card p {
+            margin: 8px 0;
+        }
 
-      .instructions-box ol {
-        margin: 5px 0 0 20px;
-        padding: 0;
-      }
+        .instructions-box {
+            background: #e8f4fd;
+            border: 1px dashed #bcef;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #0c5460;
+            line-height: 1.4;
+            text-align: left;
+        }
 
-      .btn-copiar {
-        display: block;
-        width: 100%;
-        padding: 16px;
-        background: var(--success-color);
-        color: white;
-        border: none;
-        border-radius: 12px;
-        font-size: 17px;
-        font-weight: bold;
-        cursor: pointer;
-        box-sizing: border-box;
-        transition: background 0.2s ease;
-        box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
-      }
+        .instructions-box ol {
+            margin: 5px 0 0 20px;
+            padding: 0;
+        }
 
-      .btn-copiar:hover {
-        background: #218838;
-      }
+        .btn-copiar {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-sizing: border-box;
+            transition: background 0.2s ease;
+            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+        }
 
-      .footer-note {
-        font-size: 12px;
-        color: #888;
-        margin-top: 30px;
-      }
+        .btn-copiar:hover {
+            background: #218838;
+        }
+
+        .btn-crypto {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            box-sizing: border-box;
+            transition: opacity 0.2s ease;
+            text-align: center;
+        }
+
+        .btn-binance {
+            background: #181a20;
+            border-left: 5px solid var(--binance-color);
+        }
+
+        .btn-zinli {
+            background: #2b2b2b;
+            border-left: 5px solid var(--zinli-color);
+        }
+
+        .btn-crypto:hover {
+            opacity: 0.9;
+        }
+
+        .footer-note {
+            font-size: 12px;
+            color: #888;
+            margin-top: 30px;
+        }
     </style>
   </head>
   <body>
