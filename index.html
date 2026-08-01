@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Pagos - Pago Móvil</title>
+    <style>
+        :root {
+            --primary-color: #004080;
+            --secondary-color: #007bff;
+            --success-color: #28a745;
+            --crypto-color: #f3ba2f;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 22px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .info-card {
+            background: #eef2f7;
+            border-left: 5px solid var(--secondary-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .info-card p {
+            margin: 6px 0;
+        }
+
+        .instructions-box {
+            background: #e8f4fd;
+            border: 1px dashed #bcef;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #0c5460;
+            line-height: 1.4;
+        }
+
+        .instructions-box ol {
+            margin: 5px 0 0 20px;
+            padding: 0;
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: var(--primary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin: 25px 0 15px 0;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 14px 16px;
+            margin: 10px 0;
+            background: #ffffff;
+            color: var(--text-color);
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #f1f3f5;
+            border-color: #bbb;
+        }
+
+        .btn-banco {
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .btn-crypto {
+            border-left: 4px solid var(--crypto-color);
+            background: #fffdf5;
+        }
+
+        .btn span {
+            font-size: 12px;
+            color: #777;
+            font-weight: normal;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Portal de Pagos</h2>
+        <p class="subtitle">Pago Móvil Seguro</p>
+
+        <!-- Resumen de Datos -->
+        <div class="info-card">
+            <p><strong>Monto a Pagar:</strong> <span id="montoDisplay" style="color: #d9534f; font-weight: bold; font-size: 16px;">Cargando...</span></p>
+            <p><strong>Teléfono:</strong> 0412-5072254</p>
+            <p><strong>Cédula:</strong> V-18360450</p>
+            <p><strong>Banco Destino:</strong> Mercantil</p>
+        </div>
+
+        <!-- Instrucciones Claras -->
+        <div class="instructions-box">
+            <strong>¿Cómo realizar tu pago?</strong>
+            <ol>
+                <li><strong>Selecciona tu banco</strong> en la lista de abajo.</li>
+                <li>Los datos de pago y el monto se <strong>copiarán automáticamente</strong> al portapapeles.</li>
+                <li>Se abrirá tu aplicación o la web del banco. Ve a <strong>Pago Móvil</strong> y simplemente <strong>pega</strong> los datos.</li>
+            </ol>
+        </div>
+
+        <!-- SECCIÓN: BANCOS NACIONALES -->
+        <div class="section-title">Bancos Nacionales (Pago Móvil / Transferencia)</div>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Banco de Venezuela', 'https://www.banvenez.com')">
+            Banco de Venezuela <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Banesco', 'https://www.banesco.com')">
+            Banesco <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Banco Mercantil', 'https://www.mercantilbanco.com')">
+            Banco Mercantil <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('BBVA Provincial', 'https://www.provincial.com')">
+            BBVA Provincial <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Banco Nacional de Crédito (BNC)', 'https://www.bncenlinea.com')">
+            BNC <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Bancamiga', 'https://www.bancamiga.com')">
+            Bancamiga <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Banco del Tesoro', 'https://www.tesoro.gob.ve')">
+            Banco del Tesoro <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Bancaribe', 'https://www.bancaribe.com.ve')">
+            Bancaribe <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Banplus', 'https://www.banplus.com')">
+            Banplus <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Delsur', 'https://www.delsur.com.ve')">
+            Delsur <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Banco Activo', 'https://www.bancoactivo.com')">
+            Banco Activo <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Banco Caroní', 'https://www.bancocaroni.com.ve')">
+            Banco Caroní <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Banco Exterior', 'https://www.bancoexterior.com')">
+            Banco Exterior <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Banco Fondo Común (BFC)', 'https://www.bfc.com.ve')">
+            BFC <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Banco Plaza', 'https://www.bancoplaza.com')">
+            Banco Plaza <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Banco Sofitasa', 'https://www.sofitasa.com')">
+            Sofitasa <span>Abrir app</span>
+        </button>
+
+        <button class="btn btn-banco" onclick="procesarPagoNacional('Banco Venezolano de Crédito', 'https://www.venezolano.com')">
+            Venezolano de Crédito <span>Abrir app</span>
+        </button>
+
+        <!-- SECCIÓN: PAGOS INTERNACIONALES (PRÓXIMAMENTE) -->
+        <div class="section-title">Internacionales / Divisas (Próximamente)</div>
+
+        <button class="btn btn-crypto" onclick="alertaProximamente('Binance')">
+            Binance Pay <span>Próximamente</span>
+        </button>
+
+        <button class="btn btn-crypto" onclick="alertaProximamente('Zinli')">
+            Zinli <span>Próximamente</span>
+        </button>
+
+        <button class="btn btn-crypto" onclick="alertaProximamente('Kontigo')">
+            Kontigo <span>Próximamente</span>
+        </button>
+
+        <div class="footer-note">
+            Sistema de Pago Automatizado
+        </div>
+    </div>
+
+    <script>
+        // Obtener el monto de la URL (Ejemplo: tudominio.com/pago.html?monto=350.00Bs)
+        const urlParams = new URLSearchParams(window.location.search);
+        let montoParam = urlParams.get('monto');
+        
+        // Si no mandan monto por enlace, ponemos uno por defecto
+        const montoFinal = montoParam ? decodeURIComponent(montoParam) : "0.00Bs";
+        
+        // Mostrar el monto en pantalla
+        document.getElementById('montoDisplay').innerText = montoFinal;
+
+        function procesarPagoNacional(nombreBanco, urlWeb) {
+            const telefono = "04125072254";
+            const cedula = "18360450";
+            
+            // Datos listos para copiar
+            const datosCopiar = `${telefono} ${cedula} ${montoFinal}`;
+
+            navigator.clipboard.writeText(datosCopiar).then(() => {
+                alert(`¡Datos copiados con éxito!
+
+Se ha copiado: ${datosCopiar}
+
+Abre tu app de ${nombreBanco} y pega los datos en Pago Móvil.`);
+                window.location.href = urlWeb;
+            }).catch(err => {
+                alert("Redirigiendo al banco. Por favor anota los datos manualmente.");
+                window.location.href = urlWeb;
+            });
+        }
+
+        function alertaProximamente(metodo) {
+            alert(`El método de pago con ${metodo} estará disponible próximamente.`);
+        }
+    </script>
+
+</body>
+</html>
