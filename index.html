@@ -243,34 +243,24 @@
           });
       }
       function copiarBinance() {
-        const usuarioBinance = "OmarContreras";
+            const usuarioBinance = "OmarContreras";
 
-        navigator.clipboard
-          .writeText(usuarioBinance)
-          .then(() => {
-            alert(
-              `¡Usuario de Binance copiado!\n\nUsuario: ${usuarioBinance}\n\nPégalo en la sección de Binance Pay.`,
-            );
-          })
-          .catch((err) => {
-            alert("Usuario de Binance: " + usuarioBinance);
-          });
-      }
+            navigator.clipboard.writeText(usuarioBinance).then(() => {
+                alert(`¡Usuario de Binance copiado!\n\nUsuario: ${usuarioBinance}\n\n⚠️ Recuerde que el monto a transferir es: ${montoLimpio}`);
+            }).catch(err => {
+                alert("Usuario de Binance: " + usuarioBinance + "\nMonto a transferir: " + montoLimpio);
+            });
+        }
 
-      function copiarZinli() {
-        const correoZinli = "omarenriquecs@gmail.com";
+        function copiarZinli() {
+            const correoZinli = "omarenriquecs@gmail.com";
 
-        navigator.clipboard
-          .writeText(correoZinli)
-          .then(() => {
-            alert(
-              `¡Correo de Zinli copiado!\n\nCorreo: ${correoZinli}\n\nPégalo en tu aplicación de Zinli.`,
-            );
-          })
-          .catch((err) => {
-            alert("Correo de Zinli: " + correoZinli);
-          });
-      }
+            navigator.clipboard.writeText(correoZinli).then(() => {
+                alert(`¡Correo de Zinli copiado!\n\nCorreo: ${correoZinli}\n\n⚠️ Recuerde que el monto a transferir es: ${montoLimpio}`);
+            }).catch(err => {
+                alert("Correo de Zinli: " + correoZinli + "\nMonto a transferir: " + montoLimpio);
+            });
+        }
     </script>
   </body>
 </html>
